@@ -10,10 +10,10 @@ export default function Home() {
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   const [panelControls, setPanelControls] = useState<Record<string, PanelControls>>({
-    panel1: { power: false, red: 0, green: 0, blue: 0, brightness: 50 },
-    panel2: { power: false, red: 0, green: 0, blue: 0, brightness: 50 },
-    panel3: { power: false, red: 0, green: 0, blue: 0, brightness: 50 },
-    panel4: { power: false, red: 0, green: 0, blue: 0, brightness: 50 },
+    panel1: { power: false, red: 0, green: 0, blue: 0, brightness: 128 },
+    panel2: { power: false, red: 0, green: 0, blue: 0, brightness: 128 },
+    panel3: { power: false, red: 0, green: 0, blue: 0, brightness: 128 },
+    panel4: { power: false, red: 0, green: 0, blue: 0, brightness: 128 },
   });
 
   const [panelToSync, setPanelToSync] = useState("panel1");
@@ -44,10 +44,10 @@ export default function Home() {
 
   const applyPreset = (preset: "warm" | "cool" | "reading" | "party") => {
     const presets: Record<string, PanelControls> = {
-      warm: { power: true, red: 255, green: 244, blue: 229, brightness: 80 },
-      cool: { power: true, red: 200, green: 220, blue: 255, brightness: 90 },
-      reading: { power: true, red: 255, green: 255, blue: 200, brightness: 70 },
-      party: { power: true, red: 180, green: 0, blue: 255, brightness: 100 },
+      warm: { power: true, red: 255, green: 244, blue: 229, brightness: 204 },
+      cool: { power: true, red: 200, green: 220, blue: 255, brightness: 230 },
+      reading: { power: true, red: 255, green: 255, blue: 200, brightness: 178 },
+      party: { power: true, red: 180, green: 0, blue: 255, brightness: 255 },
     };
 
     const selected = presets[preset];
@@ -129,7 +129,7 @@ export default function Home() {
               <input
                 type="range"
                 min="0"
-                max={color === "brightness" ? "100" : "255"}
+                max="255"
                 value={panel[color as keyof PanelControls]}
                 onChange={(e) =>
                   updateControl(panelId, color, parseInt(e.target.value))
@@ -148,7 +148,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="bg-white dark:bg-gray-800 shadow-sm px-4 py-3 flex items-center justify-between">
         <div className="text-lg font-semibold text-gray-800 dark:text-white">
-        Fixlit
+          Fixlit
         </div>
         <button
           onClick={handleLogout}
@@ -202,7 +202,7 @@ export default function Home() {
           </div>
 
           {/* Sync Button */}
-          <div className="mb-2"> {/* Reduced margin-bottom */}
+          <div className="mb-2">
             <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
               Select Panel to Sync
             </h3>
@@ -217,7 +217,7 @@ export default function Home() {
           </div>
 
           {/* Panel Selection Dropdown */}
-          <div className="mb-6"> {/* You can adjust this as well if necessary */}
+          <div className="mb-6">
             <select
               onChange={(e) => setPanelToSync(e.target.value)}
               className="w-full md:w-auto bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-xl py-2 px-4 transition-all"
