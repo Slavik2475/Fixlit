@@ -148,7 +148,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="bg-white dark:bg-gray-800 shadow-sm px-4 py-3 flex items-center justify-between">
         <div className="text-lg font-semibold text-gray-800 dark:text-white">
-          Smart Home Panel
+        Fixlit
         </div>
         <button
           onClick={handleLogout}
